@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://codeby-lakhan.github.io/sitemap.xml
