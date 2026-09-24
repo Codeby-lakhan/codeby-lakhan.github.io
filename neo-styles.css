@@ -220,6 +220,7 @@ img { max-width: 100%; display: block; }
 .flip-back.cyan { background: var(--cyan); box-shadow: 8px 8px 0 var(--border); }
 .flip-back.yellow { background: var(--yellow); box-shadow: 8px 8px 0 var(--border); }
 .flip-back.pink { background: var(--pink); box-shadow: 8px 8px 0 var(--border); }
+.flip-back.green { background: var(--green); box-shadow: 8px 8px 0 var(--border); }
 .flip-hint { font-family: var(--mono); font-size: 11px; opacity: .7; margin-top: 10px; }
 
 .proj {
