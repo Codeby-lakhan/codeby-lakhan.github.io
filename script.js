@@ -111,9 +111,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isTouch) b.addEventListener('click', () => { b.style.transform = 'translate(8px,8px)'; }, { once: true });
   });
 
-  /* --- Project overlay live-demo placeholders --- */
+  /* --- Flip-card live-demo placeholders --- */
   // TODO: replace data-live href with real deployment URL once a live demo is up.
-  document.querySelectorAll('.proj-overlay .ov-live').forEach((lnk) => {
+  document.querySelectorAll('.flip-back .ov-live').forEach((lnk) => {
     if (lnk.getAttribute('data-live') === 'soon') {
       lnk.classList.add('is-soon');
       lnk.removeAttribute('target');

@@ -187,10 +187,46 @@ img { max-width: 100%; display: block; }
 
 /* ---------- PROJECTS ---------- */
 .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 26px; }
+
+.flip { perspective: 1400px; }
+.flip-inner {
+  position: relative; width: 100%; height: 100%;
+  transform-style: preserve-3d;
+  transition: transform .6s cubic-bezier(.2,.7,.3,1);
+}
+.flip:hover .flip-inner,
+.flip:focus-within .flip-inner { transform: rotateY(180deg); }
+
+.project-grid .flip { position: relative; }
+.project-grid .flip .flip-inner { min-height: 100%; display: block; }
+.flip-front, .flip-back { height: 100%; box-sizing: border-box; }
+
+.flip-front, .flip-back {
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  border: 3px solid var(--paper); position: relative;
+}
+.flip-front { display: flex; flex-direction: column; }
+.flip-front.cyan { box-shadow: 8px 8px 0 var(--cyan); }
+.flip-front.pink { box-shadow: 8px 8px 0 var(--pink); }
+
+.flip-back {
+  position: absolute; inset: 0;
+  transform: rotateY(180deg);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 14px; padding: 24px; text-align: center;
+  background: var(--paper); color: var(--ink);
+  box-shadow: 8px 8px 0 var(--border);
+}
+.flip-back.cyan { background: var(--cyan); box-shadow: 8px 8px 0 var(--border); }
+.flip-back.yellow { background: var(--yellow); box-shadow: 8px 8px 0 var(--border); }
+.flip-back.pink { background: var(--pink); box-shadow: 8px 8px 0 var(--border); }
+.flip-hint { font-family: var(--mono); font-size: 11px; opacity: .7; margin-top: 10px; }
+
 .proj {
-  position: relative; overflow: hidden;
+  position: relative;
   background: var(--paper); color: var(--ink); border: 3px solid var(--paper);
   box-shadow: 8px 8px 0 var(--yellow); padding: 22px; display: flex; flex-direction: column;
+  height: 100%;
 }
 .proj.cyan { box-shadow: 8px 8px 0 var(--cyan); }
 .proj.pink { box-shadow: 8px 8px 0 var(--pink); }
@@ -200,28 +236,16 @@ img { max-width: 100%; display: block; }
 .proj-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 .proj-tags span { font-family: var(--mono); font-size: 11px; border: 2px solid var(--border); padding: 3px 8px; background: #fff; box-shadow: 2px 2px 0 var(--border); }
 
-.proj { position: relative; overflow: hidden; }
-.proj .btn-small { position: relative; z-index: 2; }
-.proj-overlay {
-  position: absolute; inset: -3px; z-index: 3; display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: 12px; padding: 20px;
-  background: repeating-linear-gradient(45deg, rgba(255,213,0,.96) 0 12px, rgba(0,229,255,.96) 12px 24px, rgba(255,107,107,.96) 24px 36px);
-  border: 3px solid var(--border);
-  opacity: 0; pointer-events: none;
-  transform: translateY(8px) scale(.98);
-  transition: opacity .18s ease, transform .18s ease;
-}
-.proj:hover .proj-overlay,
-.proj:focus-within .proj-overlay { opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); }
-.ov-title { font-family: var(--mono); font-weight: 700; font-size: 14px; background: var(--ink); color: var(--paper); padding: 6px 14px; border: 2px solid var(--ink); box-shadow: 4px 4px 0 #000; }
+.ov-title { font-family: var(--mono); font-weight: 700; font-size: 16px; background: var(--ink); color: var(--paper); padding: 8px 16px; border: 2px solid var(--ink); box-shadow: 4px 4px 0 #000; }
+.ov-line { font-family: var(--mono); font-size: 13px; opacity: .85; }
 .ov-btn {
-  font-family: var(--mono); font-weight: 700; font-size: 13px; padding: 10px 20px;
+  font-family: var(--mono); font-weight: 700; font-size: 14px; padding: 12px 22px;
   background: var(--paper); border: 3px solid var(--border); box-shadow: 4px 4px 0 var(--border);
-  color: var(--ink); text-align: center;
+  color: var(--ink); display: inline-block;
 }
 .ov-btn:hover { background: var(--yellow); transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--border); }
 .ov-live { background: var(--green); }
-.ov-live.is-soon { background: var(--paper); font-size: 12px; opacity: .85; }
+.ov-live.is-soon { opacity: .75; }
 
 /* ---------- CONTACT ---------- */
 .contact { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; }
